@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0031)file:///E:/code/Untitled-1.html -->
-<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Dành Tặng Nguyễn Minh Tân • Cháu &amp; Chú</title>
-<link href="./index.html._files/css2" rel="stylesheet">
+<title>Dành Tặng Nguyễn Minh Tân • Cháu & Chú</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{height:100%;width:100%;overflow:hidden}
@@ -101,8 +101,15 @@ body{
   animation:fadeRise 1.4s ease-out .6s forwards;
 }
 .subtitle{
-  font-family:'Playfair Display',serif;font-size:clamp(.9rem,2.3vw,1.1rem);color:rgba(255,220,185,.72);
-  letter-spacing:6px;text-transform:uppercase;margin-bottom:36px;opacity:0;animation:fadeRise 1.3s ease-out .95s forwards;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(.82rem,2.1vw,1rem);
+  color:rgba(255,220,185,.75);
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  line-height:1.7;
+  margin-bottom:32px;
+  opacity:0;
+  animation:fadeRise 1.3s ease-out .95s forwards;
 }
 .message{font-size:clamp(1.1rem,2.8vw,1.4rem);line-height:1.95;color:#f6e9d8;max-width:560px;margin:0 auto 20px;font-style:italic;text-align:center}
 .message .line{display:block;opacity:0;transform:translateY(16px)}
@@ -121,7 +128,16 @@ body{
 }
 @keyframes nameReveal{0%{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
 @keyframes underlineGrow{to{width:75%}}
-.ending{font-size:1.05rem;color:rgba(255,220,195,.75);letter-spacing:1.3px;margin:0 auto;max-width:500px;opacity:0;animation:fadeRise 1.5s ease-out 5.1s forwards}
+.ending{
+  font-size:clamp(.98rem,2.4vw,1.08rem);
+  color:rgba(255,220,195,.78);
+  letter-spacing:.6px;
+  line-height:1.8;
+  margin:0 auto;
+  max-width:520px;
+  opacity:0;
+  animation:fadeRise 1.5s ease-out 5.1s forwards;
+}
 
 .heart-area{margin-top:42px;opacity:0;animation:fadeRise 1.3s ease-out 5.7s forwards}
 .heart-btn{width:82px;height:82px;border:none;background:transparent;cursor:pointer;position:relative;transition:transform .4s cubic-bezier(.2,.9,.3,1.5)}
@@ -140,7 +156,6 @@ body{
 .spark-dot{position:fixed;pointer-events:none;z-index:99;width:7px;height:7px;border-radius:50%}
 .petal-piece{position:fixed;pointer-events:none;z-index:98;width:13px;height:17px;border-radius:50% 0 50% 50%;background:linear-gradient(135deg,#ff8fab,#ff5c8a);opacity:.75}
 
-/* Nút nhạc rõ ràng */
 .music-btn{
   position:fixed;top:18px;right:18px;z-index:50;
   width:48px;height:48px;border-radius:50%;
@@ -174,7 +189,7 @@ body{
   .card{padding:42px 24px 40px;border-radius:12px}
   .rose{width:54px;height:54px}
   .title{letter-spacing:2px}
-  .subtitle{letter-spacing:3px;margin-bottom:28px}
+  .subtitle{letter-spacing:1.8px;margin-bottom:26px}
 }
 </style>
 </head>
@@ -192,61 +207,66 @@ body{
 <div class="glow-orb orb1"></div>
 <div class="glow-orb orb2"></div>
 
-<canvas id="fxCanvas" width="1920" height="991"></canvas>
+<canvas id="fxCanvas"></canvas>
 
-<!-- NHẠC -->
-<audio id="bgMusic" preload="auto" loop="">
+<audio id="bgMusic" preload="auto" loop>
   <source src="https://direct-silver-jym7tyxa.edgeone.dev/" type="audio/mpeg">
 </audio>
 
-<!-- Nút bật/tắt nhạc -->
-<button class="music-btn playing" id="musicBtn" title="Tắt nhạc">♫</button>
+<button class="music-btn" id="musicBtn" title="Bật / Tắt nhạc">♪</button>
 
 <div class="stage">
-  <div class="card" id="mainCard" style="transform: perspective(900px) rotateY(-0.14375deg) rotateX(1.5893deg) scale(1);">
+  <div class="card" id="mainCard">
     <svg class="rose tl" viewBox="0 0 100 100" fill="none">
-      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
-      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
-      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
-      <path d="M41 57Q32 74 26 86" stroke="#5c2340" stroke-width="3" fill="none"></path>
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"/>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"/>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"/>
+      <path d="M41 57Q32 74 26 86" stroke="#5c2340" stroke-width="3" fill="none"/>
     </svg>
     <svg class="rose tr" viewBox="0 0 100 100" fill="none">
-      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
-      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
-      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"/>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"/>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"/>
     </svg>
     <svg class="rose bl" viewBox="0 0 100 100" fill="none">
-      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
-      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
-      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"/>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"/>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"/>
     </svg>
     <svg class="rose br" viewBox="0 0 100 100" fill="none">
-      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
-      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
-      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"/>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"/>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"/>
     </svg>
 
     <div class="header-heart">♡</div>
     <h1 class="title">For You</h1>
-    <p class="subtitle">Một món quà nhỏ từ trái tim cháu dành tặng riêng cho chú người cháu thương yêu nhất</p>
+    
+    <p class="subtitle">
+      MỘT MÓN QUÀ NHỎ TỪ TRÁI TIM CHÁU<br>
+      DÀNH TẶNG RIÊNG CHO CHÚ<br>
+      NGƯỜI CHÁU THƯƠNG YÊU NHẤT
+    </p>
 
     <div class="message" id="messageBox">
-      <span class="line visible">Trong cuộc đời này, có những người</span>
-      <span class="line visible">khiến cháu muốn dừng lại và nói rằng…</span>
-      <span class="line visible" style="margin-top:16px"><span class="highlight">“Cảm ơn vì đã đến và làm thế giới</span></span>
-      <span class="line visible"><span class="highlight">của cháu trở nên đẹp hơn rất nhiều.”</span></span>
+      <span class="line">Trong cuộc đời này, có những người</span>
+      <span class="line">khiến cháu muốn dừng lại và nói rằng…</span>
+      <span class="line" style="margin-top:16px"><span class="highlight">“Cảm ơn vì đã đến và làm thế giới</span></span>
+      <span class="line"><span class="highlight">của cháu trở nên đẹp hơn rất nhiều.”</span></span>
     </div>
 
     <div class="name">Nguyễn Minh Tân</div>
 
     <p class="ending">
-      Dù ngày mai có ra sao và thế nào, cháu vẫn chọn yêu chú dành chọn niềm tin cho chú — mỗi ngày, mỗi giờ, mỗi phút, mỗi giây.
+      Dù ngày mai có ra sao, cháu vẫn chọn yêu chú<br>
+      và dành trọn niềm tin cho chú<br>
+      — mỗi ngày, mỗi giờ, mỗi phút, mỗi giây.
     </p>
 
     <div class="heart-area">
       <button class="heart-btn" id="heartBtn" aria-label="Chạm trái tim">
         <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5c8a"></path>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5c8a"/>
         </svg>
       </button>
       <div class="hint-text">Chú hãy chạm vào trái tim ♥</div>
@@ -260,7 +280,6 @@ body{
 (function(){
   "use strict";
 
-  /* ========== NHẠC - SỬA CHẮC CHẮN PHÁT ĐƯỢC ========== */
   const music = document.getElementById('bgMusic');
   const musicBtn = document.getElementById('musicBtn');
   let isPlaying = false;
@@ -305,23 +324,19 @@ body{
     }
   }
 
-  // Khi metadata load xong → nhảy đến giây 30
   music.addEventListener('loadedmetadata', ()=>{
     skipTo30();
   });
 
-  // Khi có thể phát
   music.addEventListener('canplay', ()=>{
     skipTo30();
   });
 
-  // Nút nhạc
   musicBtn.addEventListener('click', (e)=>{
     e.stopPropagation();
     toggleMusic();
   });
 
-  // Tự phát khi user tương tác lần đầu
   function firstInteraction(){
     if(!isPlaying) playMusic();
     document.removeEventListener('click', firstInteraction);
@@ -330,7 +345,6 @@ body{
   document.addEventListener('click', firstInteraction);
   document.addEventListener('touchstart', firstInteraction, {passive:true});
 
-  /* ========== CANVAS ========== */
   const canvas = document.getElementById('fxCanvas');
   const ctx = canvas.getContext('2d');
   let W=0, H=0, particles=[], stars=[], softHearts=[], meteors=[], frame=0;
@@ -501,11 +515,9 @@ body{
   }
   animate();
 
-  /* ========== TYPEWRITER ========== */
   const lines = document.querySelectorAll('.message .line');
   lines.forEach((line,i)=> setTimeout(()=>line.classList.add('visible'), 1450+i*520));
 
-  /* ========== EFFECTS ========== */
   const palette = ['#ff5c8a','#ff8fab','#ffb3c6','#ffd0e0','#ffe0b2','#ffcc80','#ff9ecd','#ff7eb3','#ffd6a5','#ffb4a2'];
 
   function spawnHearts(x,y,count=18){
@@ -645,5 +657,5 @@ body{
   console.log('%c♥ Dành tặng Nguyễn Minh Tân – Cháu & Chú ♥','color:#ff8fab;font-size:14px;font-family:serif');
 })();
 </script>
-
-<div class="spark-dot" style="left: 661px; top: 398px; background: rgba(255, 215, 160, 0.75); box-shadow: rgba(255, 205, 130, 0.7) 0px 0px 10px; width: 5px; height: 5px;"></div><div class="spark-dot" style="left: 690px; top: 400px; background: rgba(255, 215, 160, 0.75); box-shadow: rgba(255, 205, 130, 0.7) 0px 0px 10px; width: 5px; height: 5px;"></div></body></html>
+</body>
+</html>
