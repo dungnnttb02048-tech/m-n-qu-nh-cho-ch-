@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)file:///E:/code/Untitled-1.html -->
+<html lang="vi"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Dành Tặng Nguyễn Minh Tân • Cháu &amp; Chú</title>
+<link href="./index.html._files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;width:100%;overflow:hidden}
+body{
+  background:#06050e;
+  font-family:'Cormorant Garamond',serif;
+  color:#f5e6d3;
+  cursor:default;
+  user-select:none;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+
+.bg-base{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 15%,rgba(160,35,85,.32) 0%,transparent 55%),
+    radial-gradient(ellipse 80% 70% at 85% 85%,rgba(65,25,125,.28) 0%,transparent 50%),
+    radial-gradient(ellipse 55% 45% at 50% 50%,rgba(25,12,55,.5) 0%,transparent 70%),
+    linear-gradient(168deg,#06050e 0%,#110918 42%,#080610 100%);
+}
+.bg-gold{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(circle at 22% 12%,rgba(255,215,140,.1) 0%,transparent 40%),
+    radial-gradient(circle at 78% 88%,rgba(255,195,110,.08) 0%,transparent 42%);
+  animation:goldPulse 10s ease-in-out infinite alternate;
+}
+@keyframes goldPulse{0%{opacity:.5;filter:brightness(.9)}100%{opacity:1;filter:brightness(1.15)}}
+.bg-vignette{
+  position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 35%,rgba(0,0,0,.62) 100%);
+}
+.bg-noise{
+  position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.aurora{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.aurora-wave{
+  position:absolute;width:200%;height:60%;left:-50%;border-radius:40%;
+  filter:blur(60px);opacity:.18;animation:auroraMove 18s ease-in-out infinite alternate;
+}
+.aurora-wave:nth-child(1){top:-10%;background:linear-gradient(90deg,transparent,#c94b7a,transparent);animation-duration:22s}
+.aurora-wave:nth-child(2){top:30%;background:linear-gradient(90deg,transparent,#7a3db0,transparent);animation-duration:26s;animation-delay:-5s}
+.aurora-wave:nth-child(3){top:55%;background:linear-gradient(90deg,transparent,#ff9ecd,transparent);animation-duration:20s;animation-delay:-10s}
+@keyframes auroraMove{0%{transform:translateX(-10%) rotate(-2deg)}100%{transform:translateX(10%) rotate(2deg)}}
+
+#fxCanvas{position:absolute;inset:0;z-index:2;pointer-events:none}
+
+.stage{
+  position:relative;z-index:10;width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:20px 16px;
+}
+
+.card{
+  position:relative;max-width:760px;width:94%;padding:56px 48px 52px;
+  background:linear-gradient(152deg,rgba(20,9,30,.9),rgba(10,5,18,.94));
+  border-radius:16px;
+  box-shadow:0 0 0 1px rgba(255,215,150,.2),0 0 70px rgba(175,45,115,.25),0 35px 90px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,230,180,.14);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  overflow:hidden;opacity:0;transform:scale(.9) translateY(30px);
+  animation:cardReveal 1.8s cubic-bezier(.16,1,.3,1) .15s forwards;
+  transition:transform .15s ease-out;
+}
+@keyframes cardReveal{to{opacity:1;transform:scale(1) translateY(0)}}
+.card::before{
+  content:'';position:absolute;inset:0;border-radius:16px;padding:2px;
+  background:linear-gradient(125deg,rgba(255,225,160,.9),rgba(255,185,110,.2) 22%,rgba(215,115,175,.4) 50%,rgba(255,215,145,.75) 78%,rgba(255,225,160,.95));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;animation:borderFlow 8s linear infinite;
+}
+@keyframes borderFlow{0%{filter:hue-rotate(0deg) brightness(1)}50%{filter:hue-rotate(18deg) brightness(1.3)}100%{filter:hue-rotate(0deg) brightness(1)}}
+.card::after{
+  content:'';position:absolute;top:-60%;left:-70%;width:45%;height:220%;
+  background:linear-gradient(90deg,transparent,rgba(255,235,190,.08),transparent);
+  transform:rotate(28deg);animation:lightSweep 9s ease-in-out infinite;pointer-events:none;
+}
+@keyframes lightSweep{0%{left:-70%}35%{left:130%}100%{left:130%}}
+
+.rose{position:absolute;width:82px;height:82px;opacity:.92;filter:drop-shadow(0 0 12px rgba(255,85,140,.5));pointer-events:none}
+.rose.tl{top:6px;left:6px;transform:rotate(-20deg)}
+.rose.tr{top:6px;right:6px;transform:rotate(20deg) scaleX(-1)}
+.rose.bl{bottom:6px;left:6px;transform:rotate(14deg) scaleY(-1)}
+.rose.br{bottom:6px;right:6px;transform:rotate(-14deg) scale(-1)}
+
+.header-heart{display:inline-block;font-size:1.6rem;margin-bottom:4px;filter:drop-shadow(0 0 10px rgba(255,100,150,.7));animation:heartFloat 3s ease-in-out infinite}
+@keyframes heartFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.title{
+  font-family:'Great Vibes',cursive;font-size:clamp(3.2rem,10vw,5rem);color:#ffeac8;
+  text-shadow:0 0 28px rgba(255,205,130,.7),0 0 55px rgba(255,155,95,.35),0 8px 20px rgba(0,0,0,.55);
+  letter-spacing:4px;margin-bottom:8px;opacity:0;transform:translateY(32px);
+  animation:fadeRise 1.4s ease-out .6s forwards;
+}
+.subtitle{
+  font-family:'Playfair Display',serif;font-size:clamp(.9rem,2.3vw,1.1rem);color:rgba(255,220,185,.72);
+  letter-spacing:6px;text-transform:uppercase;margin-bottom:36px;opacity:0;animation:fadeRise 1.3s ease-out .95s forwards;
+}
+.message{font-size:clamp(1.1rem,2.8vw,1.4rem);line-height:1.95;color:#f6e9d8;max-width:560px;margin:0 auto 20px;font-style:italic;text-align:center}
+.message .line{display:block;opacity:0;transform:translateY(16px)}
+.message .line.visible{animation:fadeRise .95s ease-out forwards}
+.message .highlight{color:#ffd9a0;font-weight:600;text-shadow:0 0 16px rgba(255,205,130,.6)}
+.name{
+  font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,7.5vw,3.8rem);color:#ffb4c8;
+  text-shadow:0 0 22px rgba(255,135,175,.75),0 0 45px rgba(255,95,145,.4);
+  margin:18px auto 26px;opacity:0;transform:scale(.8);
+  animation:nameReveal 1.9s cubic-bezier(.2,.85,.2,1) 3.8s forwards;position:relative;display:inline-block;
+}
+.name::after{
+  content:'';position:absolute;left:50%;bottom:-8px;width:0;height:2px;
+  background:linear-gradient(90deg,transparent,#ffb8c8 20%,#ffb8c8 80%,transparent);
+  transform:translateX(-50%);animation:underlineGrow 1.3s ease-out 4.7s forwards;
+}
+@keyframes nameReveal{0%{opacity:0;transform:scale(.8)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
+@keyframes underlineGrow{to{width:75%}}
+.ending{font-size:1.05rem;color:rgba(255,220,195,.75);letter-spacing:1.3px;margin:0 auto;max-width:500px;opacity:0;animation:fadeRise 1.5s ease-out 5.1s forwards}
+
+.heart-area{margin-top:42px;opacity:0;animation:fadeRise 1.3s ease-out 5.7s forwards}
+.heart-btn{width:82px;height:82px;border:none;background:transparent;cursor:pointer;position:relative;transition:transform .4s cubic-bezier(.2,.9,.3,1.5)}
+.heart-btn:hover{transform:scale(1.2)}
+.heart-btn:active{transform:scale(.9)}
+.heart-btn svg{width:100%;height:100%;filter:drop-shadow(0 0 16px rgba(255,70,125,.8));transition:filter .35s}
+.heart-btn:hover svg{filter:drop-shadow(0 0 30px rgba(255,95,145,1))}
+.heart-btn svg path{transform-origin:center;animation:heartbeat 1.5s ease-in-out infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}14%{transform:scale(1.14)}28%{transform:scale(1)}42%{transform:scale(1.1)}56%{transform:scale(1)}}
+.hint-text{margin-top:16px;font-size:.8rem;color:rgba(255,205,165,.45);letter-spacing:2.5px;opacity:0;animation:fadeRise 1.1s ease-out 6.3s forwards}
+
+.footer{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:.75rem;color:rgba(255,200,160,.32);letter-spacing:3px;z-index:20;opacity:0;animation:fadeRise 1.5s ease-out 6.6s forwards}
+@keyframes fadeRise{to{opacity:1;transform:translateY(0)}}
+
+.fly-item{position:fixed;pointer-events:none;z-index:100;will-change:transform,opacity}
+.spark-dot{position:fixed;pointer-events:none;z-index:99;width:7px;height:7px;border-radius:50%}
+.petal-piece{position:fixed;pointer-events:none;z-index:98;width:13px;height:17px;border-radius:50% 0 50% 50%;background:linear-gradient(135deg,#ff8fab,#ff5c8a);opacity:.75}
+
+/* Nút nhạc rõ ràng */
+.music-btn{
+  position:fixed;top:18px;right:18px;z-index:50;
+  width:48px;height:48px;border-radius:50%;
+  border:1.5px solid rgba(255,210,170,.4);
+  background:rgba(20,10,30,.75);
+  color:#ffd9a0;font-size:1.3rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);
+  transition:all .3s ease;
+  box-shadow:0 0 20px rgba(255,150,100,.15);
+}
+.music-btn:hover{transform:scale(1.1);border-color:rgba(255,210,170,.7);box-shadow:0 0 28px rgba(255,150,100,.3)}
+.music-btn.playing{animation:musicPulse 1.8s ease-in-out infinite}
+@keyframes musicPulse{0%,100%{box-shadow:0 0 16px rgba(255,150,100,.25)}50%{box-shadow:0 0 28px rgba(255,150,100,.55)}}
+
+.glow-orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(40px);opacity:.15;z-index:1}
+.orb1{width:280px;height:280px;background:#c94b7a;top:-80px;left:-60px;animation:orbFloat 12s ease-in-out infinite}
+.orb2{width:220px;height:220px;background:#7a3db0;bottom:-50px;right:-40px;animation:orbFloat 14s ease-in-out infinite reverse}
+@keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
+
+.ring-pulse{
+  position:absolute;border-radius:50%;border:1.5px solid rgba(255,180,200,.35);
+  pointer-events:none;z-index:5;animation:ringExpand 4s ease-out infinite;
+}
+@keyframes ringExpand{
+  0%{width:40px;height:40px;opacity:.6;transform:translate(-50%,-50%) scale(.5)}
+  100%{width:320px;height:320px;opacity:0;transform:translate(-50%,-50%) scale(1.4)}
+}
+
+@media(max-width:560px){
+  .card{padding:42px 24px 40px;border-radius:12px}
+  .rose{width:54px;height:54px}
+  .title{letter-spacing:2px}
+  .subtitle{letter-spacing:3px;margin-bottom:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-base"></div>
+<div class="bg-gold"></div>
+<div class="aurora">
+  <div class="aurora-wave"></div>
+  <div class="aurora-wave"></div>
+  <div class="aurora-wave"></div>
+</div>
+<div class="bg-noise"></div>
+<div class="bg-vignette"></div>
+<div class="glow-orb orb1"></div>
+<div class="glow-orb orb2"></div>
+
+<canvas id="fxCanvas" width="1920" height="991"></canvas>
+
+<!-- NHẠC -->
+<audio id="bgMusic" preload="auto" loop="">
+  <source src="https://direct-silver-jym7tyxa.edgeone.dev/" type="audio/mpeg">
+</audio>
+
+<!-- Nút bật/tắt nhạc -->
+<button class="music-btn playing" id="musicBtn" title="Tắt nhạc">♫</button>
+
+<div class="stage">
+  <div class="card" id="mainCard" style="transform: perspective(900px) rotateY(-0.14375deg) rotateX(1.5893deg) scale(1);">
+    <svg class="rose tl" viewBox="0 0 100 100" fill="none">
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+      <path d="M41 57Q32 74 26 86" stroke="#5c2340" stroke-width="3" fill="none"></path>
+    </svg>
+    <svg class="rose tr" viewBox="0 0 100 100" fill="none">
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+    </svg>
+    <svg class="rose bl" viewBox="0 0 100 100" fill="none">
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+    </svg>
+    <svg class="rose br" viewBox="0 0 100 100" fill="none">
+      <path d="M50 90C26 70 10 46 23 30C36 14 50 27 50 44C50 27 64 14 77 30C90 46 74 70 50 90Z" fill="#c43d6e"></path>
+      <path d="M50 78C36 65 24 48 33 37C42 26 50 35 50 48C50 35 58 26 67 37C76 48 64 65 50 78Z" fill="#e87a9f"></path>
+      <circle cx="50" cy="48" r="7.5" fill="#f8c8d8"></circle>
+    </svg>
+
+    <div class="header-heart">♡</div>
+    <h1 class="title">For You</h1>
+    <p class="subtitle">Một món quà nhỏ từ trái tim cháu dành tặng riêng cho chú người cháu thương yêu nhất</p>
+
+    <div class="message" id="messageBox">
+      <span class="line visible">Trong cuộc đời này, có những người</span>
+      <span class="line visible">khiến cháu muốn dừng lại và nói rằng…</span>
+      <span class="line visible" style="margin-top:16px"><span class="highlight">“Cảm ơn vì đã đến và làm thế giới</span></span>
+      <span class="line visible"><span class="highlight">của cháu trở nên đẹp hơn rất nhiều.”</span></span>
+    </div>
+
+    <div class="name">Nguyễn Minh Tân</div>
+
+    <p class="ending">
+      Dù ngày mai có ra sao và thế nào, cháu vẫn chọn yêu chú dành chọn niềm tin cho chú — mỗi ngày, mỗi giờ, mỗi phút, mỗi giây.
+    </p>
+
+    <div class="heart-area">
+      <button class="heart-btn" id="heartBtn" aria-label="Chạm trái tim">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#ff5c8a"></path>
+        </svg>
+      </button>
+      <div class="hint-text">Chú hãy chạm vào trái tim ♥</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Made with all my heart • Dành tặng riêng cho Chú</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ========== NHẠC - SỬA CHẮC CHẮN PHÁT ĐƯỢC ========== */
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  let isPlaying = false;
+  let hasSkipped = false;
+
+  function skipTo30(){
+    if(!hasSkipped && music.readyState >= 1){
+      music.currentTime = 30;
+      hasSkipped = true;
+    }
+  }
+
+  function playMusic(){
+    skipTo30();
+    music.volume = 0.75;
+    const p = music.play();
+    if(p !== undefined){
+      p.then(()=>{
+        isPlaying = true;
+        musicBtn.textContent = '♫';
+        musicBtn.classList.add('playing');
+        musicBtn.title = 'Tắt nhạc';
+      }).catch(err=>{
+        console.log('Play bị chặn, chờ user click:', err);
+      });
+    }
+  }
+
+  function pauseMusic(){
+    music.pause();
+    isPlaying = false;
+    musicBtn.textContent = '♪';
+    musicBtn.classList.remove('playing');
+    musicBtn.title = 'Bật nhạc';
+  }
+
+  function toggleMusic(){
+    if(isPlaying){
+      pauseMusic();
+    } else {
+      playMusic();
+    }
+  }
+
+  // Khi metadata load xong → nhảy đến giây 30
+  music.addEventListener('loadedmetadata', ()=>{
+    skipTo30();
+  });
+
+  // Khi có thể phát
+  music.addEventListener('canplay', ()=>{
+    skipTo30();
+  });
+
+  // Nút nhạc
+  musicBtn.addEventListener('click', (e)=>{
+    e.stopPropagation();
+    toggleMusic();
+  });
+
+  // Tự phát khi user tương tác lần đầu
+  function firstInteraction(){
+    if(!isPlaying) playMusic();
+    document.removeEventListener('click', firstInteraction);
+    document.removeEventListener('touchstart', firstInteraction);
+  }
+  document.addEventListener('click', firstInteraction);
+  document.addEventListener('touchstart', firstInteraction, {passive:true});
+
+  /* ========== CANVAS ========== */
+  const canvas = document.getElementById('fxCanvas');
+  const ctx = canvas.getContext('2d');
+  let W=0, H=0, particles=[], stars=[], softHearts=[], meteors=[], frame=0;
+
+  function resizeCanvas(){
+    W = canvas.width = innerWidth;
+    H = canvas.height = innerHeight;
+  }
+  addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  class DustParticle{
+    constructor(){this.init(true)}
+    init(first){
+      this.x=Math.random()*W; this.y=first?Math.random()*H:H+20;
+      this.radius=Math.random()*2.6+.4;
+      this.vy=Math.random()*.6+.1; this.vx=(Math.random()-.5)*.4;
+      this.alpha=Math.random()*.6+.15;
+      this.hue=Math.random()>.58?30+Math.random()*28:335+Math.random()*30;
+      this.twinkle=Math.random()*Math.PI*2;
+      this.twinkleSpeed=.02+Math.random()*.03;
+    }
+    update(){
+      this.y-=this.vy; this.x+=this.vx; this.twinkle+=this.twinkleSpeed;
+      if(this.y<-20)this.init(false);
+      if(this.x<-10)this.x=W+10; if(this.x>W+10)this.x=-10;
+    }
+    draw(){
+      const a=this.alpha*(.5+.5*Math.sin(this.twinkle));
+      ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
+      ctx.fillStyle=`hsla(${this.hue},88%,78%,${a})`;
+      ctx.shadowBlur=12; ctx.shadowColor=`hsla(${this.hue},90%,70%,.75)`;
+      ctx.fill(); ctx.shadowBlur=0;
+    }
+  }
+
+  class Star{
+    constructor(){
+      this.x=Math.random()*W; this.y=Math.random()*H*.75;
+      this.r=Math.random()*1.8+.25; this.baseAlpha=Math.random()*.45+.12;
+      this.phase=Math.random()*Math.PI*2; this.speed=Math.random()*.045+.015;
+    }
+    update(){this.phase+=this.speed}
+    draw(){
+      const a=this.baseAlpha*(.35+.65*Math.sin(this.phase));
+      ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,238,210,${a})`;
+      ctx.shadowBlur=8; ctx.shadowColor='rgba(255,225,170,.85)';
+      ctx.fill(); ctx.shadowBlur=0;
+    }
+  }
+
+  class SoftHeart{
+    constructor(){this.reset()}
+    reset(){
+      this.x=Math.random()*W; this.y=H+50+Math.random()*80;
+      this.size=Math.random()*18+10; this.vy=Math.random()*.75+.22;
+      this.alpha=Math.random()*.3+.1; this.swing=Math.random()*Math.PI*2;
+      this.swingSpeed=Math.random()*.02+.007;
+      this.rotation=Math.random()*360; this.rotSpeed=(Math.random()-.5)*.8;
+    }
+    update(){
+      this.y-=this.vy; this.swing+=this.swingSpeed;
+      this.x+=Math.sin(this.swing)*.65; this.rotation+=this.rotSpeed;
+      if(this.y<-60)this.reset();
+    }
+    draw(){
+      ctx.save(); ctx.translate(this.x,this.y);
+      ctx.rotate(this.rotation*Math.PI/180); ctx.globalAlpha=this.alpha;
+      ctx.fillStyle='#ff8fb8'; ctx.font=`${this.size}px serif`;
+      ctx.fillText('♥',0,0); ctx.restore();
+    }
+  }
+
+  class Meteor{
+    constructor(){this.reset()}
+    reset(){
+      this.x=Math.random()*W*1.2; this.y=-30;
+      this.len=60+Math.random()*90; this.speed=6+Math.random()*8;
+      this.angle=Math.PI/4+(Math.random()-.5)*.3;
+      this.alpha=.7+Math.random()*.3; this.life=0;
+      this.maxLife=40+Math.random()*40;
+    }
+    update(){
+      this.x+=Math.cos(this.angle)*this.speed;
+      this.y+=Math.sin(this.angle)*this.speed;
+      this.life++;
+      if(this.life>this.maxLife||this.y>H+50)this.reset();
+    }
+    draw(){
+      const progress=this.life/this.maxLife; const a=this.alpha*(1-progress);
+      ctx.save(); ctx.beginPath();
+      ctx.moveTo(this.x,this.y);
+      ctx.lineTo(this.x-Math.cos(this.angle)*this.len, this.y-Math.sin(this.angle)*this.len);
+      ctx.strokeStyle=`rgba(255,220,180,${a})`; ctx.lineWidth=2; ctx.lineCap='round';
+      ctx.shadowBlur=15; ctx.shadowColor='rgba(255,200,140,.9)';
+      ctx.stroke(); ctx.restore();
+    }
+  }
+
+  class Constellation {
+    constructor(){
+      this.points = [];
+      for(let i=0;i<18;i++){
+        this.points.push({
+          x: Math.random()*W, y: Math.random()*H*0.7,
+          vx: (Math.random()-0.5)*0.15, vy: (Math.random()-0.5)*0.15,
+          r: 1.2 + Math.random()
+        });
+      }
+    }
+    update(){
+      this.points.forEach(p=>{
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0||p.x>W) p.vx*=-1;
+        if(p.y<0||p.y>H*0.8) p.vy*=-1;
+      });
+    }
+    draw(){
+      for(let i=0;i<this.points.length;i++){
+        for(let j=i+1;j<this.points.length;j++){
+          const a=this.points[i], b=this.points[j];
+          const dx=a.x-b.x, dy=a.y-b.y;
+          const d=Math.sqrt(dx*dx+dy*dy);
+          if(d<160){
+            ctx.beginPath();
+            ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+            ctx.strokeStyle=`rgba(255,200,180,${0.12*(1-d/160)})`;
+            ctx.lineWidth=0.8; ctx.stroke();
+          }
+        }
+      }
+      this.points.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,220,200,0.55)';
+        ctx.shadowBlur=6; ctx.shadowColor='rgba(255,200,160,0.6)';
+        ctx.fill(); ctx.shadowBlur=0;
+      });
+    }
+  }
+
+  let constellation = new Constellation();
+
+  function initParticles(){
+    particles=[]; stars=[]; softHearts=[]; meteors=[];
+    for(let i=0;i<130;i++) particles.push(new DustParticle());
+    for(let i=0;i<55;i++) stars.push(new Star());
+    for(let i=0;i<16;i++) softHearts.push(new SoftHeart());
+    for(let i=0;i<3;i++) meteors.push(new Meteor());
+    constellation = new Constellation();
+  }
+  initParticles();
+
+  function animate(){
+    frame++;
+    ctx.clearRect(0,0,W,H);
+    constellation.update(); constellation.draw();
+    stars.forEach(s=>{s.update();s.draw()});
+    particles.forEach(p=>{p.update();p.draw()});
+    softHearts.forEach(h=>{h.update();h.draw()});
+    if(frame%180===0 && Math.random()>0.4){
+      meteors.push(new Meteor());
+      if(meteors.length>5) meteors.shift();
+    }
+    meteors.forEach(m=>{m.update();m.draw()});
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  /* ========== TYPEWRITER ========== */
+  const lines = document.querySelectorAll('.message .line');
+  lines.forEach((line,i)=> setTimeout(()=>line.classList.add('visible'), 1450+i*520));
+
+  /* ========== EFFECTS ========== */
+  const palette = ['#ff5c8a','#ff8fab','#ffb3c6','#ffd0e0','#ffe0b2','#ffcc80','#ff9ecd','#ff7eb3','#ffd6a5','#ffb4a2'];
+
+  function spawnHearts(x,y,count=18){
+    for(let i=0;i<count;i++){
+      setTimeout(()=>{
+        const el=document.createElement('div');
+        el.className='fly-item';
+        el.textContent = Math.random()>0.65 ? '✨' : '♥';
+        el.style.left=(x+(Math.random()-.5)*60)+'px';
+        el.style.top=y+'px';
+        el.style.color=palette[Math.floor(Math.random()*palette.length)];
+        el.style.fontSize=(14+Math.random()*24)+'px';
+        el.style.filter='drop-shadow(0 0 6px currentColor)';
+        document.body.appendChild(el);
+        const angle=(Math.random()-.5)*1.6, dist=130+Math.random()*180, rot=(Math.random()-.5)*70;
+        el.animate([
+          {transform:'translate(0,0) scale(1) rotate(0deg)',opacity:1},
+          {transform:`translate(${Math.sin(angle)*90}px,-${dist}px) scale(.25) rotate(${rot}deg)`,opacity:0}
+        ],{duration:2600+Math.random()*1100,easing:'cubic-bezier(.12,.7,.22,1)',fill:'forwards'}).onfinish=()=>el.remove();
+      },i*32);
+    }
+  }
+
+  function spawnSparks(x,y,count=36){
+    for(let i=0;i<count;i++){
+      const s=document.createElement('div');
+      s.className='spark-dot';
+      const ang=(i/count)*Math.PI*2+Math.random()*.4;
+      const dist=45+Math.random()*85;
+      s.style.left=x+'px'; s.style.top=y+'px';
+      const col=palette[Math.floor(Math.random()*palette.length)];
+      s.style.background=col; s.style.boxShadow=`0 0 12px ${col}`;
+      document.body.appendChild(s);
+      s.animate([
+        {transform:'translate(0,0) scale(1)',opacity:1},
+        {transform:`translate(${Math.cos(ang)*dist}px,${Math.sin(ang)*dist}px) scale(0)`,opacity:0}
+      ],{duration:550+Math.random()*550,easing:'cubic-bezier(.08,.7,.2,1)',fill:'forwards'}).onfinish=()=>s.remove();
+    }
+  }
+
+  function spawnPetals(x,y,count=12){
+    for(let i=0;i<count;i++){
+      const p=document.createElement('div');
+      p.className='petal-piece';
+      p.style.left=x+'px'; p.style.top=y+'px';
+      document.body.appendChild(p);
+      const tx=(Math.random()-.5)*200, ty=90+Math.random()*140, rot=Math.random()*420;
+      p.animate([
+        {transform:'translate(0,0) rotate(0deg) scale(1)',opacity:.85},
+        {transform:`translate(${tx}px,${ty}px) rotate(${rot}deg) scale(.35)`,opacity:0}
+      ],{duration:2100+Math.random()*900,easing:'cubic-bezier(.18,.6,.28,1)',fill:'forwards'}).onfinish=()=>p.remove();
+    }
+  }
+
+  function spawnRing(x,y){
+    const ring=document.createElement('div');
+    ring.className='ring-pulse';
+    ring.style.left=x+'px'; ring.style.top=y+'px';
+    document.body.appendChild(ring);
+    setTimeout(()=>ring.remove(),4000);
+  }
+
+  const heartBtn=document.getElementById('heartBtn');
+  heartBtn.addEventListener('click',e=>{
+    e.stopPropagation();
+    if(!isPlaying) playMusic();
+    const r=heartBtn.getBoundingClientRect();
+    const cx=r.left+r.width/2, cy=r.top+r.height/2;
+    spawnHearts(cx,cy,26);
+    spawnSparks(cx,cy,42);
+    spawnPetals(cx,cy,14);
+    spawnRing(cx,cy);
+    setTimeout(()=>spawnHearts(cx,cy,10),180);
+  });
+
+  document.addEventListener('click',e=>{
+    if(e.target.closest('.heart-btn') || e.target.closest('.music-btn')) return;
+    if(!isPlaying) playMusic();
+    spawnHearts(e.clientX,e.clientY,7);
+    if(Math.random()>0.6) spawnSparks(e.clientX,e.clientY,12);
+  });
+
+  let lastTrail=0;
+  document.addEventListener('mousemove',e=>{
+    const now=Date.now();
+    if(now-lastTrail<40) return;
+    lastTrail=now;
+    if(Math.random()>0.72){
+      const s=document.createElement('div');
+      s.className='spark-dot';
+      s.style.left=e.clientX+'px'; s.style.top=e.clientY+'px';
+      s.style.background='rgba(255,215,160,.75)';
+      s.style.boxShadow='0 0 10px rgba(255,205,130,.7)';
+      s.style.width='5px'; s.style.height='5px';
+      document.body.appendChild(s);
+      s.animate([{transform:'scale(1)',opacity:.75},{transform:'scale(0)',opacity:0}],
+        {duration:480,easing:'ease-out',fill:'forwards'}).onfinish=()=>s.remove();
+    }
+  });
+
+  const card=document.getElementById('mainCard');
+  document.addEventListener('mousemove',e=>{
+    const cx=innerWidth/2, cy=innerHeight/2;
+    const dx=(e.clientX-cx)/cx;
+    const dy=(e.clientY-cy)/cy;
+    card.style.transform=`perspective(900px) rotateY(${dx*6}deg) rotateX(${-dy*5}deg) scale(1)`;
+  });
+  document.addEventListener('mouseleave',()=>{
+    card.style.transform='perspective(900px) rotateY(0) rotateX(0) scale(1)';
+  });
+
+  document.addEventListener('touchstart',e=>{
+    if(e.touches.length>0){
+      if(!isPlaying) playMusic();
+      const t=e.touches[0];
+      spawnHearts(t.clientX,t.clientY,5);
+    }
+  },{passive:true});
+
+  let resizeTimer;
+  addEventListener('resize',()=>{
+    clearTimeout(resizeTimer);
+    resizeTimer=setTimeout(()=>{resizeCanvas();initParticles()},250);
+  });
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='h'||e.key==='H'){
+      if(!isPlaying) playMusic();
+      const r=heartBtn.getBoundingClientRect();
+      spawnHearts(r.left+r.width/2,r.top+r.height/2,30);
+      spawnSparks(r.left+r.width/2,r.top+r.height/2,50);
+      spawnRing(r.left+r.width/2,r.top+r.height/2);
+    }
+    if(e.key==='m'||e.key==='M') toggleMusic();
+  });
+
+  console.log('%c♥ Dành tặng Nguyễn Minh Tân – Cháu & Chú ♥','color:#ff8fab;font-size:14px;font-family:serif');
+})();
+</script>
+
+<div class="spark-dot" style="left: 661px; top: 398px; background: rgba(255, 215, 160, 0.75); box-shadow: rgba(255, 205, 130, 0.7) 0px 0px 10px; width: 5px; height: 5px;"></div><div class="spark-dot" style="left: 690px; top: 400px; background: rgba(255, 215, 160, 0.75); box-shadow: rgba(255, 205, 130, 0.7) 0px 0px 10px; width: 5px; height: 5px;"></div></body></html>
